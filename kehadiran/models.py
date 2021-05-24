@@ -15,8 +15,8 @@ class Kehadiran(models.Model):
         ('hadir', 'Hadir'),
     )
     karyawan = models.ForeignKey(Karyawan, on_delete=models.CASCADE, null=True)
-    jenis_kehadiran = models.CharField(max_length=20, choices=JENIS_KEHADIRAN_CHOICES)
-    waktu = models.DateField()
+    jenis_kehadiran = models.CharField(max_length=20, choices=JENIS_KEHADIRAN_CHOICES, default='hadir')
+    waktu = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
         return self.karyawan.nama
