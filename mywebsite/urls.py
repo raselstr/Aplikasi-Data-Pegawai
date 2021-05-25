@@ -17,7 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
+from homepage import views as homepage_views
+from karyawan import views as karyawan_views
+from kehadiran import views as kehadiran_views
+
 urlpatterns = [
-    path('pegawai/',include('pegawai.urls')),
+    # path('pegawai/',include('pegawai.urls')),
     path('admin/', admin.site.urls),
+    path('',karyawan_views.profil),
+    path('login/', homepage_views.login_view),
+    path('logout/', homepage_views.logout_view),
+    path('daftar_hadir/', kehadiran_views.daftar_hadir),
+
 ]
