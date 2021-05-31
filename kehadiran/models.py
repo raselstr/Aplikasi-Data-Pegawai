@@ -20,3 +20,19 @@ class Kehadiran(models.Model):
 
     def __unicode__(self):
         return self.karyawan.nama
+
+class Izin1(models.Model):
+    JENIS_KEHADIRAN_CHOICES = (
+        ('izin', 'Izin'),
+        ('cuti', 'Cuti')
+    )
+
+    karyawan = models.ForeignKey(Karyawan,on_delete=models.CASCADE, null=True)
+    jenis_kehadiran = models.CharField(max_length=20, choices=JENIS_KEHADIRAN_CHOICES)
+    waktu_mulai = models.DateField()
+    waktu_berhenti = models.DateField()
+    alasan = models.TextField()
+    disetujui = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.karyawan.nama
